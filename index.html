@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adirae - Premium Scalp Oil</title>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Montserrat', sans-serif;
+            background: #f5f3ef;
+            color: #181818;
+            overflow-x: hidden;
+        }
+        /* Top brown bar */
+        .top-bar {
+            width: 100%;
+            background: #a97c50;
+            color: #fff;
+            text-align: center;
+            font-size: 0.95rem;
+            letter-spacing: 1px;
+            padding: 8px 0 7px 0;
+            font-family: 'Montserrat', sans-serif;
+        }
+        header {
+            display: flex;
+            align-items: center;
+            background: #fff;
+            box-shadow: none;
+            padding: 0 0 0 0;
+            border-bottom: 1px solid #e5e1db;
+            position: relative;
+            z-index: 2;
+            height: 80px;
+        }
+        .logo {
+            font-size: 2.1rem;
+            font-weight: 700;
+            letter-spacing: 7px;
+            color: #181818;
+            text-shadow: none;
+            margin: 0 0 0 48px;
+            padding: 0;
+            flex-shrink: 0;
+            font-family: 'Montserrat', sans-serif;
+        }
+        nav {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex: 1;
+            background: #fff;
+            margin: 0;
+            gap: 36px;
+        }
+        nav a {
+            display: inline-block;
+            padding: 0 18px;
+            text-decoration: none;
+            color: #181818;
+            font-weight: 500;
+            font-size: 1.05rem;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            background: none;
+            border: none;
+            font-family: 'Montserrat', sans-serif;
+            transition: color 0.2s, font-weight 0.2s;
+        }
+        nav a:hover,
+        nav a.active {
+            color: #a97c50;
+            font-weight: 700;
+        }
+        nav a::before,
+        nav a::after {
+            display: none !important;
+        }
+        .hero {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 70vh;
+            background: #f5f3ef;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero-img {
+            width: 400px;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 30px;
+            box-shadow: 0 8px 32px #e5e1db55;
+            animation: float 4s ease-in-out infinite;
+            background: #fff;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-18px); }
+        }
+        .hero-content {
+            margin-left: 60px;
+            max-width: 500px;
+            animation: fadeInRight 1.2s;
+        }
+        @keyframes fadeInRight {
+            from { opacity: 0; transform: translateX(60px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        .hero-content h1 {
+            font-size: 2.8rem;
+            color: #181818;
+            margin-bottom: 18px;
+            font-family: 'Montserrat', monospace;
+            letter-spacing: 1px;
+        }
+        .hero-content p {
+            font-size: 1.2rem;
+            color: #444;
+            margin-bottom: 32px;
+        }
+        .shop-btn {
+            background: #181818;
+            color: #fff;
+            border: none;
+            padding: 16px 38px;
+            font-size: 1.1rem;
+            border-radius: 0;
+            cursor: pointer;
+            font-weight: 600;
+            box-shadow: none;
+            transition: background 0.3s, color 0.3s, transform 0.2s;
+            animation: fadeInUp 1.5s;
+            letter-spacing: 1px;
+        }
+        .shop-btn:hover {
+            background: #fff;
+            color: #181818;
+            border: 1px solid #181818;
+            transform: scale(1.03);
+        }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .products-section {
+            display: flex;
+            justify-content: center;
+            gap: 60px;
+            margin: 80px 0 60px 0;
+            flex-wrap: wrap;
+            background: #f5f3ef;
+        }
+        .product-card {
+            background: #fff;
+            border-radius: 0;
+            box-shadow: 0 4px 24px #e5e1db33;
+            width: 320px;
+            padding: 32px 24px 24px 24px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+            animation: fadeInUp 1.2s;
+            border: 1px solid #e5e1db;
+        }
+        .product-card:hover {
+            transform: translateY(-10px) scale(1.03);
+            box-shadow: 0 8px 32px #e5e1db33;
+        }
+        .product-img {
+            width: 180px;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 0;
+            margin-bottom: 18px;
+            box-shadow: 0 2px 12px #e5e1db22;
+            background: #f5f3ef;
+        }
+        .product-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #181818;
+            margin-bottom: 10px;
+            letter-spacing: 1px;
+        }
+        .product-desc {
+            color: #444;
+            font-size: 1rem;
+            margin-bottom: 18px;
+        }
+        .product-btn {
+            background: #181818;
+            color: #fff;
+            border: none;
+            padding: 12px 28px;
+            font-size: 1rem;
+            border-radius: 0;
+            cursor: pointer;
+            font-weight: 600;
+            box-shadow: none;
+            transition: background 0.3s, color 0.3s, transform 0.2s;
+            letter-spacing: 1px;
+        }
+        .product-btn:hover {
+            background: #fff;
+            color: #181818;
+            border: 1px solid #181818;
+            transform: scale(1.03);
+        }
+        /* Remove animated oil drops for a minimal look */
+        .oil-drop, .oil-drop1, .oil-drop2, .oil-drop3 {
+            display: none !important;
+        }
+        /* HERO SLIDE START */
+        .hero-slide-section {
+            position: relative;
+            width: 100%;
+            min-height: 90vh; /* increased from 48vh */
+            display: flex;
+            align-items: stretch;
+            justify-content: center;
+            background: #f5f3ef;
+            overflow: hidden;
+        }
+        .hero-slide-bg {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            width: 100%; height: 100%;
+            z-index: 1;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .hero-slide-img-bg {
+            width: 100vw;
+            max-width: 100%;
+            max-height: 90vh; /* increased from 70vh */
+            height: auto;
+            object-fit: cover;
+            object-position: center;
+            filter: brightness(0.93);
+            display: block;
+        }
+        .hero-slide-overlay {
+            position: relative;
+            z-index: 2;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: flex-start;
+            justify-content: flex-start;
+        }
+        .hero-slide-content {
+            margin-left: 7vw;
+            margin-top: 8vh;
+            background: rgba(245,243,239,0.88);
+            padding: 48px 48px 40px 48px;
+            border-radius: 0 24px 24px 0;
+            box-shadow: 0 4px 24px #e5e1db33;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            max-width: 420px;
+        }
+        .hero-slide-title {
+            font-size: 2.7rem;
+            font-family: 'Montserrat', monospace;
+            color: #181818;
+            font-weight: 700;
+            letter-spacing: 2px;
+            margin-bottom: 18px;
+            line-height: 1.1;
+            text-transform: uppercase;
+        }
+        .hero-slide-desc {
+            color: #444;
+            font-size: 1.15rem;
+            margin-bottom: 32px;
+            line-height: 1.5;
+        }
+        @media (max-width: 900px) {
+            .hero-slide-section {
+                min-height: 56vh;
+            }
+            .hero-slide-img-bg {
+                max-height: 56vh;
+            }
+            .hero-slide-content {
+                margin: 32px auto 0 auto;
+                border-radius: 0 0 24px 24px;
+                max-width: 95vw;
+                padding: 32px 18px;
+            }
+            .hero-slide-overlay {
+                justify-content: center;
+                align-items: flex-end;
+            }
+        }
+        @media (max-width: 600px) {
+            .hero-slide-section {
+                min-height: 36vh;
+            }
+            .hero-slide-img-bg {
+                max-height: 36vh;
+            }
+            .hero-slide-content {
+                margin: 18px auto 0 auto;
+                padding: 18px 8px;
+                border-radius: 0 0 18px 18px;
+            }
+            .hero-slide-title {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+    <!-- HERO SLIDE END -->
+</head>
+<body>
+    <!-- Navbar -->
+
+    <div class="top-bar">FREE US SHIPPING ABOVE 500 &rarr;</div>
+    <header>
+        <div class="logo">ADIREA</div>
+        <nav>
+            <a href="#" class="active">Shop</a>
+            <a href="#about">Our Story</a>
+            <a href="#blog">Blog</a>
+            <a href="#quiz">Quiz</a>
+        </nav>
+    </header>
+    <!-- HERO SLIDE START -->
+    <section class="hero hero-slide-section">
+        <div class="hero-slide-bg">
+            <img src="IMG_4698.jpg" alt="Adirae Haircare Rituals" class="hero-slide-img-bg">
+        </div>
+        <div class="hero-slide-overlay">
+            <div class="hero-slide-content">
+                <h1 class="hero-slide-title">HAIRCARE RITUALS</h1>
+                <div class="hero-slide-desc">
+                    The foundation collection focus on strength, length and shine
+                </div>
+                <button class="shop-btn" onclick="window.location='#products'">SHOP NOW</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- MARQUEE CONTENT -->
+    <div class="marquee-bar">
+      <div class="marquee-inner">
+        <span>
+          100% Natural Ingredients &nbsp; • &nbsp;
+          Cruelty-Free &nbsp; • &nbsp;
+          Dermatologist Approved &nbsp; • &nbsp;
+          Free Shipping Above 500 &nbsp; • &nbsp;
+          Made in India &nbsp; • &nbsp;
+          For All Hair Types &nbsp; • &nbsp;
+          Visible Results in 4 Weeks &nbsp; • &nbsp;
+          100% Natural Ingredients &nbsp; • &nbsp;
+          Cruelty-Free &nbsp; • &nbsp;
+          Dermatologist Approved &nbsp; • &nbsp;
+          Free Shipping Above 500 &nbsp; • &nbsp;
+          Made in India &nbsp; • &nbsp;
+          For All Hair Types &nbsp; • &nbsp;
+          Visible Results in 4 Weeks
+        </span>
+      </div>
+    </div>
+    <style>
+    .marquee-bar {
+      width: 100%;
+      background: #a97c50;
+      color: #fff;
+      overflow: hidden;
+      white-space: nowrap;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.08rem;
+      font-weight: 500;
+      letter-spacing: 1.2px;
+      padding: 12px 0;
+      border-bottom: 1px solid #e5e1db;
+      position: relative;
+      z-index: 2;
+    }
+    .marquee-inner {
+      display: inline-block;
+      white-space: nowrap;
+      animation: marquee-scroll 28s linear infinite;
+    }
+    .marquee-inner span {
+      display: inline-block;
+      padding-left: 100vw;
+    }
+    @keyframes marquee-scroll {
+      0% {
+        transform: translateX(0);
+      }
+      100% {
+        transform: translateX(-50%);
+      }
+    }
+    @media (max-width: 600px) {
+      .marquee-bar {
+        font-size: 0.95rem;
+        padding: 8px 0;
+      }
+    }
+    </style>
+
+    <!-- PRODUCT SECTION START -->
+    <section class="products-section" id="products">
+      <div class="product-card" data-img="7bg.png" data-hover="7.jpg">
+        <div class="product-img-bg">
+          <a href="product-detail.html">
+            <img src="7bg.png" alt="Fortifying Scalp Oil" class="product-img">
+          </a>
+        </div>
+        <div class="product-title">FORTIFYING SCALP OIL</div>
+        <div class="product-price">₹250</div>
+        <a href="product-detail.html" style="text-decoration:none;">
+          <button class="product-btn">ADD TO BAG</button>
+        </a>
+      </div>
+      <div class="product-card" data-img="6bg.png" data-hover="6.jpg">
+        <div class="product-img-bg">
+          <a href="product-detail.html">
+            <img src="6bg.png" alt="Deep Conditioning Oil" class="product-img">
+          </a>
+        </div>
+        <div class="product-title">DEEP CONDITIONING OIL</div>
+        <div class="product-price">₹250</div>
+        <a href="product-detail.html" style="text-decoration:none;">
+          <button class="product-btn">ADD TO BAG</button>
+        </a>
+      </div>
+      <div class="product-card" data-img="product3.jpg" data-hover="product3-hover.jpg">
+        <div class="product-img-bg">
+          <a href="product-detail.html">
+            <img src="product3.jpg" alt="Scalp Massager Comb" class="product-img">
+          </a>
+        </div>
+        <div class="product-title">SCALP MASSAGER COMB</div>
+        <div class="product-price">₹200</div>
+        <a href="product-detail.html" style="text-decoration:none;">
+          <button class="product-btn">ADD TO BAG</button>
+        </a>
+      </div>
+    </section>
+    <style>
+    .products-section {
+      display: flex;
+      justify-content: center;
+      gap: 48px;
+      margin: 80px 0 60px 0;
+      flex-wrap: wrap;
+      background: #f5f3ef;
+      padding-bottom: 40px;
+    }
+    .product-card {
+      background: #fff;
+      border-radius: 0;
+      box-shadow: 0 4px 24px #e5e1db33;
+      width: 340px;
+      padding: 0 0 32px 0;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.3s, box-shadow 0.3s;
+      border: 1px solid #e5e1db;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .product-card:hover {
+      transform: translateY(-10px) scale(1.03);
+      box-shadow: 0 8px 32px #e5e1db33;
+    }
+    .product-img-bg {
+      width: 100%;
+      background: linear-gradient(to bottom, #181818 60%, #f5f3ef 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 500px; /* increased from 380px */
+      margin-bottom: 0;
+    }
+    .product-img {
+      width: 320px;   /* increased from 180px */
+      height: 500px;  /* increased from 320px */
+      object-fit: contain;
+      background: transparent;
+      margin-top: 20px;
+      margin-bottom: 0;
+      border-radius: 0;
+      box-shadow: none;
+      display: block;
+    }
+    .product-title {
+      font-size: 1.08rem;
+      font-family: 'Montserrat', monospace;
+      font-weight: 700;
+      color: #181818;
+      margin: 28px 0 10px 0;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+    }
+    .product-desc {
+      color: #444;
+      font-size: 1rem;
+      margin-bottom: 18px;
+      padding: 0 18px;
+      min-height: 56px;
+    }
+    .product-price {
+      font-size: 1.1rem;
+      color: #181818;
+      font-family: 'Montserrat', monospace;
+      font-weight: 600;
+      margin-bottom: 18px;
+      letter-spacing: 1px;
+    }
+    .product-btn {
+      background: #181818;
+      color: #fff;
+      border: none;
+      padding: 16px 0;
+      width: 90%;
+      font-size: 1.05rem;
+      border-radius: 0;
+      cursor: pointer;
+      font-weight: 600;
+      letter-spacing: 1px;
+      transition: background 0.3s, color 0.3s, border 0.2s, transform 0.2s;
+      margin: 0 auto;
+      margin-top: 12px;
+      font-family: 'Montserrat', monospace;
+    }
+    .product-btn:hover {
+      background: #a97c50; /* brown color on hover */
+      color: #fff;
+      border: 1px solid #a97c50;
+      transform: scale(1.03);
+    }
+    @media (max-width: 1100px) {
+      .products-section {
+        gap: 24px;
+      }
+      .product-card {
+        width: 90vw;
+        max-width: 340px;
+      }
+    }
+    @media (max-width: 700px) {
+      .products-section {
+        flex-direction: column;
+        align-items: center;
+        gap: 32px;
+      }
+      .product-card {
+        width: 98vw;
+        max-width: 340px;
+      }
+      .product-img-bg {
+        height: 260px;
+      }
+      .product-img {
+        height: 180px;
+        width: 120px;
+        margin-top: 20px;
+      }
+    }
+    </style>
+    <!-- PRODUCT SECTION END -->
+
+    <!-- RANDOM IMAGE SECTION START -->
+    <section class="random-image-section">
+      <div class="random-image-content">
+        <h2 class="random-image-title">Best For</h2>
+        <div class="random-image-desc">
+          Dull, lifeless hair , Split ends and roughness ,Heat-damaged or chemically treated hair , Dryness and frizz
+        </div>
+        <div class="random-image-visuals random-image-multi">
+          <img src="4.jpg" alt="Protection Collection Bundle" class="random-image-main">
+          <img src="2.jpg" alt="Random 2" class="random-image-main">
+          <img src="3.jpg" alt="Random 3" class="random-image-main">
+          <img src="Converted File.jpg" alt="Random 3" class="random-image-main">
+          <img src="IMG_4668.JPG" alt="Random 3" class="random-image-main">
+        </div>
+        <button class="random-image-btn">SHOP NOW</button>
+      </div>
+    </section>
+    <style>
+    .random-image-section {
+      width: 100%;
+      background: #f3ede5;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 70px 0 60px 0;
+    }
+    .random-image-content {
+      width: 100%;
+      max-width: 1100px;
+      text-align: center;
+      position: relative;
+      background: none;
+      padding: 0;
+      margin: 0;
+    }
+    .random-image-label {
+      display: inline-block;
+      background: #3d426b;
+      font-size: 1.05rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      border-radius: 3px;
+      padding: 4px 18px 3px 18px;
+      margin-bottom: 22px;
+      margin-top: 0;
+      font-family: 'Montserrat', monospace;
+      text-transform: uppercase;
+    }
+    .random-image-title {
+      font-size: 2.5rem;
+      font-family: 'Montserrat', monospace;
+      color: #181818;
+      font-weight: 700;
+      letter-spacing: 6px;
+      margin: 18px 0 10px 0;
+      text-transform: uppercase;
+    }
+    .random-image-desc {
+      color: #444;
+      font-size: 1.18rem;
+      margin-bottom: 38px;
+      margin-top: 0;
+      font-family: 'Montserrat', sans-serif;
+      letter-spacing: 1px;
+    }
+    .random-image-visuals {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+      margin-bottom: 38px;
+      margin-top: 10px;
+      gap: 32px;
+    }
+    .random-image-main {
+      max-width: 320px;
+      width: 100%;
+      max-height: 340px;
+      object-fit: contain;
+      border-radius: 0;
+      background: #f5f3ef;
+      box-shadow: none;
+      display: block;
+    }
+    .random-image-btn {
+      background: #181818;
+      color: #fff;
+      border: none;
+      padding: 18px 54px;
+      font-size: 1.1rem;
+      border-radius: 0;
+      cursor: pointer;
+      font-weight: 600;
+      letter-spacing: 2px;
+      font-family: 'Montserrat', monospace;
+      margin-top: 18px;
+      transition: background 0.3s, color 0.3s, border 0.2s, transform 0.2s;
+      text-transform: uppercase;
+    }
+    .random-image-btn:hover {
+      background: #fff;
+      color: #181818;
+      border: 1px solid #181818;
+      transform: scale(1.03);
+    }
+    @media (max-width: 1100px) {
+      .random-image-main {
+        max-width: 200px;
+        max-height: 180px;
+      }
+      .random-image-visuals {
+        gap: 16px;
+      }
+    }
+    @media (max-width: 700px) {
+      .random-image-main {
+        max-width: 90px;
+        max-height: 90px;
+      }
+      .random-image-visuals {
+        gap: 8px;
+      }
+      .random-image-title {
+        font-size: 1.3rem;
+        letter-spacing: 2px;
+      }
+      .random-image-desc {
+        font-size: 1rem;
+      }
+    }
+    </style>
+    <!-- RANDOM IMAGE SECTION END -->
+    <script>
+    // Product image hover swap
+    document.querySelectorAll('.product-card').forEach(function(card) {
+      var img = card.querySelector('.product-img');
+      var original = card.getAttribute('data-img');
+      var hover = card.getAttribute('data-hover');
+      if (img && hover) {
+        card.addEventListener('mouseenter', function() {
+          img.src = hover;
+        });
+        card.addEventListener('mouseleave', function() {
+          img.src = original;
+        });
+      }
+    });
+    </script>
+</body>
+</html>

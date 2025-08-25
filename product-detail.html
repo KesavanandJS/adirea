@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fortifying Scalp Oil - Adirae</title>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Montserrat', sans-serif;
+            background: #fff;
+            color: #181818;
+            overflow-x: hidden;
+        }
+        /* ...navbar styles, copy from your index.html... */
+        .top-bar {
+            width: 100%;
+            background: #a97c50;
+            color: #fff;
+            text-align: center;
+            font-size: 0.95rem;
+            letter-spacing: 1px;
+            padding: 8px 0 7px 0;
+            font-family: 'Montserrat', sans-serif;
+        }
+        header {
+            display: flex;
+            align-items: center;
+            background: #fff;
+            box-shadow: none;
+            padding: 0 0 0 0;
+            border-bottom: 1px solid #e5e1db;
+            position: relative;
+            z-index: 2;
+            height: 80px;
+        }
+        .logo {
+            font-size: 2.1rem;
+            font-weight: 700;
+            letter-spacing: 7px;
+            color: #181818;
+            text-shadow: none;
+            margin: 0 0 0 48px;
+            padding: 0;
+            flex-shrink: 0;
+            font-family: 'Montserrat', sans-serif;
+        }
+        nav {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex: 1;
+            background: #fff;
+            margin: 0;
+            gap: 36px;
+        }
+        nav a {
+            display: inline-block;
+            padding: 0 18px;
+            text-decoration: none;
+            color: #181818;
+            font-weight: 500;
+            font-size: 1.05rem;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            background: none;
+            border: none;
+            font-family: 'Montserrat', sans-serif;
+            transition: color 0.2s, font-weight 0.2s;
+        }
+        nav a:hover,
+        nav a.active {
+            color: #a97c50;
+            font-weight: 700;
+        }
+        nav a::before,
+        nav a::after {
+            display: none !important;
+        }
+        /* Product detail layout */
+        .product-detail-container {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: flex-start;
+            gap: 60px;
+            max-width: 1200px;
+            margin: 60px auto 0 auto;
+            padding: 0 24px;
+        }
+        .product-detail-image-col {
+            flex: 1 1 400px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .product-detail-image {
+            width: 420px;
+            height: 600px;
+            object-fit: contain;
+            background: #fff;
+            border-radius: 0;
+            box-shadow: 0 4px 24px #e5e1db33;
+            margin-bottom: 18px;
+        }
+        .product-detail-info-col {
+            flex: 1 1 400px;
+            max-width: 480px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+        .product-detail-title {
+            font-size: 2.2rem;
+            font-family: 'Montserrat', monospace;
+            font-weight: 700;
+            letter-spacing: 3px;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+        }
+        .product-detail-rating {
+            display: flex;
+            align-items: center;
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+        }
+        .product-detail-rating .stars {
+            color: #a97c50;
+            font-size: 1.2rem;
+            margin-right: 8px;
+        }
+        .product-detail-price {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #181818;
+            margin-bottom: 18px;
+            letter-spacing: 1px;
+        }
+        .product-detail-desc {
+            color: #444;
+            font-size: 1.1rem;
+            margin-bottom: 24px;
+            line-height: 1.6;
+        }
+        .product-detail-purchase {
+            width: 100%;
+            border: 1px solid #e5e1db;
+            border-radius: 0;
+            margin-bottom: 18px;
+            padding: 18px 18px 10px 18px;
+            background: #faf8f4;
+        }
+        .purchase-option {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        .purchase-option input[type="radio"] {
+            accent-color: #a97c50;
+            margin-right: 10px;
+        }
+        .purchase-option label {
+            font-size: 1rem;
+            font-weight: 500;
+            color: #181818;
+            margin-right: auto;
+        }
+        .purchase-option .purchase-price {
+            font-size: 1rem;
+            color: #181818;
+            font-weight: 600;
+        }
+        .product-detail-qty-row {
+            display: flex;
+            align-items: center;
+            margin-bottom: 18px;
+            gap: 10px;
+        }
+        .qty-btn {
+            width: 36px;
+            height: 36px;
+            font-size: 1.2rem;
+            background: #fff;
+            color: #181818;
+            border: 1px solid #e5e1db;
+            border-radius: 0;
+            cursor: pointer;
+            font-weight: 700;
+            transition: background 0.2s;
+        }
+        .qty-btn:hover {
+            background: #f3ede5;
+        }
+        .qty-input {
+            width: 48px;
+            text-align: center;
+            font-size: 1.1rem;
+            border: 1px solid #e5e1db;
+            background: #fff;
+            color: #181818;
+            border-radius: 0;
+            margin: 0 6px;
+            height: 36px;
+        }
+        .add-to-bag-btn {
+            background: #181818;
+            color: #fff;
+            border: none;
+            padding: 18px 0;
+            width: 100%;
+            font-size: 1.1rem;
+            border-radius: 0;
+            cursor: pointer;
+            font-weight: 700;
+            letter-spacing: 2px;
+            margin-top: 8px;
+            font-family: 'Montserrat', monospace;
+            transition: background 0.3s, color 0.3s, border 0.2s, transform 0.2s;
+            text-transform: uppercase;
+        }
+        .add-to-bag-btn:hover {
+            background: #a97c50;
+            color: #fff;
+            border: 1px solid #a97c50;
+            transform: scale(1.03);
+        }
+        .product-detail-shipping {
+            font-size: 0.98rem;
+            color: #444;
+            margin-top: 10px;
+            margin-bottom: 18px;
+        }
+        /* Product Image Slideshow */
+        .product-slideshow {
+            position: relative;
+            width: 420px;
+            height: 600px;
+            margin-bottom: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .slideshow-img {
+            position: absolute;
+            top: 0; left: 0;
+            width: 420px;
+            height: 600px;
+            object-fit: contain;
+            background: #fff;
+            border-radius: 0;
+            box-shadow: 0 4px 24px #e5e1db33;
+            opacity: 0;
+            pointer-events: none;
+            z-index: 1;
+            transition: opacity 0.5s cubic-bezier(.4,0,.2,1), transform 0.5s cubic-bezier(.4,0,.2,1);
+            transform: translateX(0);
+        }
+        .slideshow-img.active {
+            opacity: 1;
+            pointer-events: auto;
+            z-index: 2;
+            transform: translateX(0);
+        }
+        .slideshow-img.slide-left {
+            transform: translateX(-60px);
+            opacity: 0;
+            transition: opacity 0.5s, transform 0.5s;
+        }
+        .slideshow-img.slide-right {
+            transform: translateX(60px);
+            opacity: 0;
+            transition: opacity 0.5s, transform 0.5s;
+        }
+        .slideshow-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(245,243,239,0.9);
+            border: none;
+            color: #181818;
+            font-size: 2rem;
+            cursor: pointer;
+            z-index: 3;
+            padding: 0 12px;
+            border-radius: 50%;
+            transition: background 0.2s;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .slideshow-arrow.left { left: 8px; }
+        .slideshow-arrow.right { right: 8px; }
+        .slideshow-arrow:hover {
+            background: #a97c50;
+            color: #fff;
+        }
+        .slideshow-dashes {
+            position: absolute;
+            bottom: 18px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 18px;
+            z-index: 4;
+        }
+        .slideshow-dash {
+            display: inline-block;
+            width: 38px;
+            height: 4px;
+            border-radius: 2px;
+            background: #e5e1db;
+            border: none;
+            cursor: pointer;
+            transition: background 0.2s, border 0.2s;
+            margin: 0 2px;
+        }
+        .slideshow-dash.active {
+            background: #a97c50;
+        }
+        /* Remove dot styles if present */
+        .slideshow-dots, .slideshow-dot { display: none !important; }
+        @media (max-width: 900px) {
+            .product-detail-container {
+                flex-direction: column;
+                gap: 32px;
+                align-items: center;
+            }
+            .product-detail-info-col {
+                max-width: 98vw;
+                width: 100%;
+            }
+            .product-slideshow, .slideshow-img, .product-detail-image {
+                width: 98vw;
+                max-width: 340px;
+                height: 340px;
+            }
+        }
+        @media (max-width: 600px) {
+            .product-detail-image {
+                width: 90vw;
+                height: auto;
+                max-width: 320px;
+                max-height: 320px;
+            }
+            .product-detail-title {
+                font-size: 1.2rem;
+                letter-spacing: 1.5px;
+            }
+            .product-slideshow, .slideshow-img {
+                width: 90vw;
+                max-width: 320px;
+                height: 220px;
+            }
+        }
+
+        /* PRODUCT DETAILS SECTION (MATCH REFERENCE: FULL WIDTH, LEFT-ALIGNED, MINIMAL STYLE) */
+        .product-detail-info-section {
+          max-width: 1000px;
+          margin: 60px auto 40px auto;
+          background: transparent;
+          border-radius: 0;
+          box-shadow: none;
+          padding: 0;
+          font-family: 'Montserrat', sans-serif;
+          border: none;
+          display: block;
+        }
+        .detail-info-block {
+          width: 100%;
+          border-bottom: 1px solid #e5e1db;
+          padding: 0;
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+          background: transparent;
+        }
+        .detail-info-label {
+          width: 100%;
+          font-size: 1rem;
+          font-family: 'Montserrat', monospace;
+          font-weight: 700;
+          letter-spacing: 2px;
+          color: #181818;
+          text-transform: uppercase;
+          background: transparent;
+          padding: 28px 0 8px 0;
+          text-align: left;
+          border: none;
+          line-height: 1.3;
+        }
+        .detail-info-content {
+          width: 100%;
+          padding: 0 0 28px 0;
+          color: #444;
+          font-size: 1.08rem;
+          background: transparent;
+          font-family: 'Montserrat', sans-serif;
+          line-height: 1.7;
+          text-align: left;
+        }
+        .detail-info-content ul {
+          margin: 0;
+          padding-left: 18px;
+          list-style-position: outside;
+          text-align: left;
+        }
+        .detail-info-content li {
+          margin-bottom: 8px;
+          text-align: left;
+        }
+        .detail-info-block:last-child {
+          border-bottom: none;
+        }
+        @media (max-width: 900px) {
+          .product-detail-info-section {
+            max-width: 98vw;
+            margin: 40px 0 24px 0;
+          }
+          .detail-info-label {
+            padding: 18px 0 8px 0;
+          }
+          .detail-info-content {
+            padding: 0 0 18px 0;
+          }
+        }
+    </style>
+</head>
+<body>
+    <div class="top-bar">FREE US SHIPPING ABOVE 500 &rarr;</div>
+    <header>
+        <div class="logo">ADIREA</div>
+        <nav>
+            <a href="index.html" class="active">Shop</a>
+            <a href="#about">Our Story</a>
+            <a href="#blog">Blog</a>
+            <a href="#quiz">Quiz</a>
+        </nav>
+    </header>
+    <div class="product-detail-container">
+        <div class="product-detail-image-col">
+            <!-- Product Image Slideshow Start -->
+            <div class="product-slideshow">
+                <img src="7bg.png" alt="Fortifying Scalp Oil" class="product-detail-image slideshow-img active">
+                <img src="7.jpg" alt="Fortifying Scalp Oil Alt" class="product-detail-image slideshow-img">
+                <img src="2.jpg" alt="Fortifying Scalp Oil Alt 2" class="product-detail-image slideshow-img">
+                <img src="3.jpg" alt="Fortifying Scalp Oil Alt 2" class="product-detail-image slideshow-img">
+                <img src="8.jpg" alt="Fortifying Scalp Oil Alt 2" class="product-detail-image slideshow-img">
+                <img src="9.jpg" alt="Fortifying Scalp Oil Alt 2" class="product-detail-image slideshow-img">
+                <img src="Converted File.jpg" alt="Fortifying Scalp Oil Alt 2" class="product-detail-image slideshow-img">
+                <button class="slideshow-arrow left" onclick="changeSlide(-1)">&#8592;</button>
+                <button class="slideshow-arrow right" onclick="changeSlide(1)">&#8594;</button>
+                <div class="slideshow-dashes">
+                    <span class="slideshow-dash active" onclick="goToSlide(0)"></span>
+                    <span class="slideshow-dash" onclick="goToSlide(1)"></span>
+                    <span class="slideshow-dash" onclick="goToSlide(2)"></span>
+                    <span class="slideshow-dash" onclick="goToSlide(3)"></span>
+                    <span class="slideshow-dash" onclick="goToSlide(4)"></span>
+                    <span class="slideshow-dash" onclick="goToSlide(5)"></span>
+                </div>
+            </div>
+            <!-- Product Image Slideshow End -->
+        </div>
+        <div class="product-detail-info-col">
+            <div class="product-detail-title">FORTIFYING SCALP OIL</div>
+            <div class="product-detail-rating">
+                <span class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+                <span>421</span>
+            </div>
+            <div class="product-detail-price">₹250</div>
+            <div class="product-detail-desc">
+            A luxurious, lightweight hair oil crafted with 10+ botanical-rich oils and natural fragrance to restore shine, softness, and strength to your hair lengths and ends. Packed with nutrient-dense oils like Argan, Rosehip, Baobab, and Olive Squalane, this blend works to reduce breakage, tame frizz, and prevent split ends—leaving your hair touchably smooth and glossy. Perfect for your final haircare step or pre-wash ritual.
+            </div>
+            <div class="product-detail-purchase">
+                <div class="purchase-option">
+                    <input type="radio" id="one-time" name="purchase" checked>
+                    <label for="one-time">One-Time Purchase</label>
+                    <span class="purchase-price">₹250.00</span>
+                </div>
+            </div>
+            <div class="product-detail-qty-row">
+                <button class="qty-btn" onclick="changeQty(-1)">-</button>
+                <input type="text" class="qty-input" id="qty" value="1" readonly>
+                <button class="qty-btn" onclick="changeQty(1)">+</button>
+            </div>
+            <button class="add-to-bag-btn">ADD TO BAG – ₹250</button>
+            <div class="product-detail-shipping">
+                Free shipping on orders above ₹500
+            </div>
+        </div>
+    </div>
+
+    <!-- PRODUCT DETAILS SECTION (MATCH REFERENCE: FULL WIDTH, LEFT-ALIGNED, MINIMAL STYLE) -->
+    <section class="product-detail-info-section">
+      <div class="detail-info-block">
+        <div class="detail-info-label">DETAILS</div>
+        <div class="detail-info-content">
+          Get thick. Our daily Fortifying Scalp Oil is tested to visibly improve hair strength, shine, and scalp health. Every drop delivers a blend of 10+ botanical-rich oils and natural fragrance to restore shine, softness, and strength to your hair lengths and ends. Formulated without silicones, SLS/SLES, phthalates, and parabens.
+        </div>
+      </div>
+      <div class="detail-info-block">
+        <div class="detail-info-label">WHO IT'S FOR</div>
+        <div class="detail-info-content">
+          <ul>
+            <li>Those experiencing dull, lifeless hair, split ends, or roughness</li>
+            <li>Those looking to support a fuller-looking hairline</li>
+            <li>Those looking to maintain their hair health</li>
+            <li>All hair types and textures</li>
+            <li>Can be used while wearing extensions, wigs, and weaves</li>
+          </ul>
+        </div>
+      </div>
+      <div class="detail-info-block">
+        <div class="detail-info-label">SIGNATURE FRAGRANCE</div>
+        <div class="detail-info-content">
+          Rich and complex, with notes of sandalwood, warm musk, night-blooming jasmine, and violet leaves.
+        </div>
+      </div>
+      <div class="detail-info-block">
+        <div class="detail-info-label">HOW TO USE</div>
+        <div class="detail-info-content">
+          <ul>
+            <li>Apply a few drops to scalp and hair lengths as needed.</li>
+            <li>Massage gently for best absorption.</li>
+            <li>Use daily or as a pre-wash ritual.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="detail-info-block">
+        <div class="detail-info-label">INGREDIENTS</div>
+        <div class="detail-info-content">
+          Argan Oil, Rosehip Oil, Baobab Oil, Olive Squalane, Sunflower Oil, Jojoba Oil, Vitamin E, and natural fragrance. No silicones, SLS/SLES, phthalates, or parabens.
+        </div>
+      </div>
+      <div class="detail-info-block">
+        <div class="detail-info-label">KEY BENEFITS</div>
+        <div class="detail-info-content">
+          <ul>
+            <li>Restores shine and softness</li>
+            <li>Reduces breakage and split ends</li>
+            <li>Tames frizz and smooths hair</li>
+            <li>Lightweight, non-greasy formula</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+    <style>
+    .product-detail-info-section {
+      max-width: 1000px;
+      margin: 60px auto 40px auto;
+      background: transparent;
+      border-radius: 0;
+      box-shadow: none;
+      padding: 0;
+      font-family: 'Montserrat', sans-serif;
+      border: none;
+      display: block;
+    }
+    .detail-info-block {
+      width: 100%;
+      border-bottom: 1px solid #e5e1db;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      background: transparent;
+    }
+    .detail-info-label {
+      width: 100%;
+      font-size: 1rem;
+      font-family: 'Montserrat', monospace;
+      font-weight: 700;
+      letter-spacing: 2px;
+      color: #181818;
+      text-transform: uppercase;
+      background: transparent;
+      padding: 28px 0 8px 0;
+      text-align: left;
+      border: none;
+      line-height: 1.3;
+    }
+    .detail-info-content {
+      width: 100%;
+      padding: 0 0 28px 0;
+      color: #444;
+      font-size: 1.08rem;
+      background: transparent;
+      font-family: 'Montserrat', sans-serif;
+      line-height: 1.7;
+      text-align: left;
+    }
+    .detail-info-content ul {
+      margin: 0;
+      padding-left: 18px;
+      list-style-position: outside;
+      text-align: left;
+    }
+    .detail-info-content li {
+      margin-bottom: 8px;
+      text-align: left;
+    }
+    .detail-info-block:last-child {
+      border-bottom: none;
+    }
+    @media (max-width: 900px) {
+      .product-detail-info-section {
+        max-width: 98vw;
+        margin: 40px 0 24px 0;
+      }
+      .detail-info-label {
+        padding: 18px 0 8px 0;
+      }
+      .detail-info-content {
+        padding: 0 0 18px 0;
+      }
+    }
+    </style>
+    <script>
+    function changeQty(delta) {
+        var qtyInput = document.getElementById('qty');
+        var qty = parseInt(qtyInput.value, 10);
+        qty = isNaN(qty) ? 1 : qty;
+        qty += delta;
+        if (qty < 1) qty = 1;
+        qtyInput.value = qty;
+    }
+
+    // Product Image Slideshow Logic with smooth transitions
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('.slideshow-img');
+    const dashes = document.querySelectorAll('.slideshow-dash');
+
+    function showSlide(idx, direction = 0) {
+        slides.forEach((slide, i) => {
+            slide.classList.remove('active', 'slide-left', 'slide-right');
+            if (i === idx) {
+                slide.classList.add('active');
+            } else if (direction !== 0) {
+                // Animate out the previous slide
+                if (i === currentSlide) {
+                    slide.classList.add(direction > 0 ? 'slide-left' : 'slide-right');
+                }
+            }
+            if (dashes[i]) dashes[i].classList.toggle('active', i === idx);
+        });
+        currentSlide = idx;
+    }
+
+    function changeSlide(delta) {
+        let next = (currentSlide + delta + slides.length) % slides.length;
+        showSlide(next, delta);
+    }
+
+    function goToSlide(idx) {
+        let direction = idx > currentSlide ? 1 : -1;
+        showSlide(idx, direction);
+    }
+
+    // Initialize first slide
+    showSlide(0);
+    </script>
+</body>
+</html>
+        
